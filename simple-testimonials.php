@@ -6,21 +6,6 @@
   Version: 0.3
 */
 
-
-//REGISTER SCRIPTS
-function st_register_scripts() {
-    if (!is_admin()) {
-        // register  
-        wp_register_script('st_unslider', plugins_url('assets/unslider.min.js', __FILE__));
-        wp_register_script('st_script', plugins_url('script.js', __FILE__));
-        // enqueue  
-        wp_enqueue_script('jquery');
-        wp_enqueue_script('st_unslider');
-        wp_enqueue_script('st_script');
-    }
-}
-
-
 //REGISTER STYLES
 function st_register_styles() {
     // register  + enqueue
@@ -38,8 +23,26 @@ function st_function($type='st_function') {
         while ($loop->have_posts()) {
             $loop->the_post(); ?>
 
+            <?php 
+
+            $count_posts = wp_count_posts('simple_testimonials'); 
+            $published_posts = $count_posts->publish; 
+
+            ?>
+
+
             <div class="st-container cf wrap">
+            
                 <?php the_content(); ?>
+
+                <h4><?php the_title(); ?>
+
+                    <?php if( $published_posts > 1 ) {
+                        echo '<a href="btn" href="#">See More</a>';
+                    } ?>
+
+                </h4>
+
             </div>
 
         <?php
@@ -65,7 +68,7 @@ function st_function_onpage( $atts ) {
 
     if ($loop->have_posts()) {
 
-        $output = '<div class="st-container-inpage per_slide-' .$per_slide.'"><div class="slider"><ul>';
+        $output = '<div class="st-container-inpage per_slide-' .$per_slide.'"><ul>';
 
         if ($per_slide > 1){
 
@@ -119,7 +122,7 @@ function st_function_onpage( $atts ) {
 
         }
 
-        $output .= '</ul></div></div>';
+        $output .= '</ul></div>';
     }
 
     return $output;
@@ -171,6 +174,5 @@ function st_init() {
 
 //ADD ALL THE ACTIONS
 add_action('init', 'st_init');
-add_action('wp_print_scripts', 'st_register_scripts');
 add_action('wp_print_styles', 'st_register_styles');
 ?>

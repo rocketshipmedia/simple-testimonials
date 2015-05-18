@@ -34,6 +34,11 @@
     padding: 0;
 }
 
+.st-container-inpage ul {
+    list-style-type: none;
+    padding: 0;
+}
+
 .st-container-inpage li .st-item {
     margin-bottom: 2em;
     padding-bottom: 2em;
