@@ -1,0 +1,53 @@
+.cf:after,
+.cf:before {
+    content: "";
+    display: table
+}
+
+.cf:after {
+    clear: both
+}
+
+.cf {
+    zoom: 1
+}
+
+/* random output */
+
+.st-container {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+    font-style: italic;
+}
+
+.st-title {
+    font-size: .85em;
+    font-weight: 700
+}
+
+/* looped ul output */
+
+.st-container-inpage {
+    margin: 1.5em 0;
+    padding: 0;
+}
+
+.st-container-inpage li .st-item {
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid #eee;
+}
+
+.st-container-inpage li .st-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.st-container-inpage.per_slide.slide_count-1 li .st-item {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
